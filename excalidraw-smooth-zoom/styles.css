@@ -1,0 +1,38 @@
+/* Excalidraw Smooth Zoom */
+
+/* Canvas cursor while the plugin runs a drag. Excalidraw sets the canvas cursor as an inline
+   style, so these need !important to show. */
+.excalidraw__canvas.ess-cursor-zoom { cursor: zoom-in !important; }
+.excalidraw__canvas.ess-cursor-grab { cursor: grabbing !important; }
+
+/* Virtual cursor drawn where you pressed while the real one is locked and hidden.
+   Its left/top are set from code. */
+.ess-pan-cursor {
+  position: fixed;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  z-index: 99999;
+}
+/* White drawn with "difference" inverts whatever is underneath. */
+.ess-pan-cursor--inverted { mix-blend-mode: difference; }
+/* Black-outlined icons get a thin white halo so they show on dark boards too. */
+.ess-pan-cursor--icon { filter: drop-shadow(0 0 1px #fff) drop-shadow(0 0 1px #fff); }
+
+/* Tray mode's Edit menu, lifted out of the bottom bar to float beside the pen. It normally
+   borrows the bar's panel, so floating it needs its own. Its left/top/width are set from code;
+   !important overrides Excalidraw's own layout for the menu in the bar. */
+.excalidraw .App-tray-menu.ess-floating-menu {
+  position: fixed !important;
+  left: 0;
+  top: 0;
+  margin: 0 !important;
+  background: var(--island-bg-color) !important;
+  box-shadow: var(--shadow-island) !important;
+  border-radius: var(--border-radius-lg) !important;
+  padding-bottom: 8px !important;
+  pointer-events: auto !important;
+}
+
+/* Number boxes beside the settings sliders. */
+.ess-number-input { width: 7em; }
