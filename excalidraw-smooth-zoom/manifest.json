@@ -3,7 +3,7 @@
   "name": "Excalidraw Smooth Zoom",
   "version": "1.0.0",
   "minAppVersion": "1.0.0",
-  "description": "Replaces Excalidraw's mouse scroll wheel behaviour with smooth zooming.",
+  "description": "Replaces Excalidraw's middle mouse scroll wheel behaviour with smooth zooming.",
   "author": "Yeove",
   "authorUrl": "https://yeove.com",
   "isDesktopOnly": true
