@@ -1,10 +1,5 @@
 /* Excalidraw Smooth Zoom */
 
-/* Canvas cursor while the plugin runs a drag. Excalidraw sets the canvas cursor as an inline
-   style, so these need !important to show. */
-.excalidraw__canvas.ess-cursor-zoom { cursor: zoom-in !important; }
-.excalidraw__canvas.ess-cursor-grab { cursor: grabbing !important; }
-
 /* Virtual cursor drawn where you pressed while the real one is locked and hidden.
    Its left/top are set from code. */
 .ess-pan-cursor {
@@ -20,18 +15,18 @@
 .ess-pan-cursor--icon { filter: drop-shadow(0 0 1px #fff) drop-shadow(0 0 1px #fff); }
 
 /* Tray mode's Edit menu, lifted out of the bottom bar to float beside the pen. It normally
-   borrows the bar's panel, so floating it needs its own. Its left/top/width are set from code;
-   !important overrides Excalidraw's own layout for the menu in the bar. */
+   borrows the bar's panel, so floating it needs its own. Its left/top/width are set from code.
+   The extra class outranks Excalidraw's own `.excalidraw .App-tray-menu` rule. */
 .excalidraw .App-tray-menu.ess-floating-menu {
-  position: fixed !important;
+  position: fixed;
   left: 0;
   top: 0;
-  margin: 0 !important;
-  background: var(--island-bg-color) !important;
-  box-shadow: var(--shadow-island) !important;
-  border-radius: var(--border-radius-lg) !important;
-  padding-bottom: 8px !important;
-  pointer-events: auto !important;
+  margin: 0;
+  background: var(--island-bg-color);
+  box-shadow: var(--shadow-island);
+  border-radius: var(--border-radius-lg);
+  padding-bottom: 8px;
+  pointer-events: auto;
 }
 
 /* Number boxes beside the settings sliders. */

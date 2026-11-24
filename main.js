@@ -38,14 +38,16 @@ const MENU_MARGIN = 8;        // px kept clear of the drawing's edges
 // and width, which change as it moves, are set from code.
 const CLS = {
   float: 'ess-floating-menu',
-  zoomCursor: 'ess-cursor-zoom',
-  grabCursor: 'ess-cursor-grab',
   panCursor: 'ess-pan-cursor',
   panCursorInverted: 'ess-pan-cursor--inverted',
   panCursorIcon: 'ess-pan-cursor--icon',
   numberInput: 'ess-number-input',
 };
 const FLOAT_KEYS = ['left', 'top', 'width'];   // the inline styles the floating menu gets
+// Canvas cursor during a plugin drag. Excalidraw sets the canvas cursor as an inline style, which
+// no stylesheet rule can beat without !important, so this one is set inline too and handed back
+// to Excalidraw's own value when the drag ends.
+const DRAG_CURSOR = { zoom: 'zoom-in', pan: 'grabbing' };
 
 // A Ctrl right-click this soon after the pen was active over a drawing is the pen's barrel
 // button, so its context menu is eaten (drivers can send it before the press, or as a mouse click).
@@ -597,7 +599,7 @@ module.exports = class ExcalidrawSmoothZoom extends ObsidianPlugin {
     e.preventDefault();
     e.stopImmediatePropagation();
     const target = e.target;
-    this.drag = { mode, cam, target, pointerId: e.pointerId,
+    this.drag = { mode, cam, target, pointerId: e.pointerId, cursor: target.style.cursor,
                   moved: false, lastX: e.clientX, lastY: e.clientY, skipNext: false,
                   pressX: e.clientX, pressY: e.clientY, standIn: null,
                   mask: BUTTON_MASK[e.button],                  // the button that holds the drag
@@ -827,13 +829,13 @@ module.exports = class ExcalidrawSmoothZoom extends ObsidianPlugin {
     try { d.target.releasePointerCapture(d.pointerId); } catch (_) {
       // Capture already gone (it ends by itself when the button comes up): nothing to release.
     }
-    this.setDragCursor(d.target, null);
+    d.target.style.cursor = d.cursor;   // Excalidraw's own cursor back
   }
 
   // The cursor shown over the canvas while the plugin runs a drag (when it isn't locked and hidden).
+  // `mode` is 'zoom' or 'pan'.
   setDragCursor(target, mode) {
-    target.classList.toggle(CLS.zoomCursor, mode === 'zoom');
-    target.classList.toggle(CLS.grabCursor, mode === 'pan');
+    target.style.cursor = DRAG_CURSOR[mode];
   }
 
   // ─── Pen middle-button click: Tray mode's Edit menu at the pen ───
