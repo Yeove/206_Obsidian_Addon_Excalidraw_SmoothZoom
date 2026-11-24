@@ -1,7 +1,7 @@
 {
   "id": "excalidraw-smooth-zoom",
   "name": "Excalidraw Smooth Zoom",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "minAppVersion": "1.0.0",
   "description": "Replaces Excalidraw's mouse scroll wheel behaviour with smooth zooming.",
   "author": "Yeove",
