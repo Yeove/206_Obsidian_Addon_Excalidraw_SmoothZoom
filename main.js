@@ -71,7 +71,7 @@ const DEFAULTS = {
   zoomSpeed:           1,      // x ZOOM_SPEED_UNIT zoom per pixel of wheel delta
   smoothingMs:         80,     // wheel zoom easing for slow, single ticks (fast spins: x0.3125)
   wheelBounceMs:       120,    // ignore a reverse wheel tick this soon after the last tick (0 = off)
-  captivePan:          true,   // middle-drag pans with the cursor locked, so it never leaves the canvas
+  captivePan:          false,  // middle-drag pans with the cursor locked, so it never leaves the canvas
   panSpeed:            1.0,    // 1 = the canvas follows the hand exactly
   panShowCursor:       false,  // draw a virtual cursor at the press point while it's locked
   panCursorType:       'cross',// one of PAN_CURSORS
