@@ -28,8 +28,7 @@ Changes mouse scroll wheel behaviour to smoothly zoom in & out of the canvas.
 | **Pen side button (Right-click Behaviour) Quickly, without moving the mouse** Opens the Edit menu (stroke, background, stroke width, pressure, opacity) next to the cursor |
 | **Pen side button (Right-click Behaviour)**, drag | Pans the drawing |
 
-The side button's click threshold (8 px by default) is in settings: move the pen less than that and it's a click, more and it's a drag.
-
+The side button's click threshold (8 px by default) is in settings.
 
 ## Install
 
